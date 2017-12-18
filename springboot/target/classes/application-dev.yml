@@ -1,0 +1,68 @@
+spring:
+    #redis服务器相关配置
+    redis:
+        sentinel:
+          master:
+          nodes:
+        host: 172.20.10.71
+        password:
+        port: 6379
+        pool:
+          min-idle: 20
+          max-idle: 20
+          max-active: 100
+          max-wait: -1
+        timeout: 1000
+        #通过@Cacheable代理的缓存默认失效时间(单位：秒)
+        cacheableDefaultExpSec: 12000
+    datasource:
+        dialect: mysql
+        url: 'jdbc:mysql://rm-uf6t6z36398zwi69uo.mysql.rds.aliyuncs.com:3306/chenpt?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&allowMultiQueries=true'
+        username: 'root'
+        password: 'Chen1993'
+        driver-class-name: 'com.mysql.jdbc.Driver'
+        type: com.alibaba.druid.pool.DruidDataSource
+        initialSize: 1
+        minIdle : 5
+        maxActive: 10
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: SELECT 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        filters: stat,wall,slf4j
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        useGlobalDataSourceStat: true
+        monitorUserName: admin
+        monitorPassword: admin
+        resetEnable: false
+        allow:
+        deny:
+        exclusions:
+    thymeleaf:
+        # tiles 定义文件所在的位置，多个用逗号隔开如"classpath:/templates/tiles-defs-member.xml,classpath:/templates/tiles-defs-order.xml"
+        tilesDefLocations: "classpath:/templates/"
+#        excludedViewNames: [member/*,demo/*,merchant/*,jk51b/*,store/*,wechat/*, product/*,login/*,account/*]
+        cache: false
+#        mode: LEGACYHTML5
+mybatis:
+  mapperLocations: classpath:sqlmaps/**/*.xml
+  typeAliasesPackage: com.chenpt.model
+server:
+  #会话超时时间，原则上要略大于redis session生效时间
+  port: 8080
+  sessionTimeout: 300000
+  contextPath: /
+  # Tomcat特性相关
+  tomcat:
+    accessLogEnabled: false
+    protocolHeader: x-forwarded-proto
+    remoteIpHeader: x-forwarded-for
+    connectionTimeout: 180000
+    basedir:
+    # secs
+    backgroundProcessorDelay: 30
