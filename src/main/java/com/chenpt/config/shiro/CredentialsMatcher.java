@@ -6,7 +6,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
 
 /**
- * 版权所有(C) 2017 上海银路投资管理有限公司
+ * 版权所有(C) 2017
  * 描述:
  * 作者: chen_pt
  * 创建日期: 2018/5/29

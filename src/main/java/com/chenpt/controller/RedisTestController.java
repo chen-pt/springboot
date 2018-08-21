@@ -2,7 +2,6 @@ package com.chenpt.controller;
 
 import com.chenpt.common.dto.ResultData;
 import com.chenpt.service.RedisService;
-import org.apache.rocketmq.common.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
@@ -37,21 +36,6 @@ public class RedisTestController {
         return data;
     }
 
-    @RequestMapping("add")
-    public @ResponseBody ResultData testR(){
-        ResultData data = new ResultData();
-        Message message = new Message();
-        message.setBody("hello".getBytes());
 
-//        CloudQueue queue = CloudQueueFactory.create("testHelloWord");
-
-        try {
-//            queue.putMessage(message);
-        } catch (Exception e) {
-        }
-
-
-        return data;
-    }
 
 }

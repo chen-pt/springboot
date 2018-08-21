@@ -6,6 +6,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -45,12 +46,25 @@ public class LoginController {
         }
 
     }
-    @RequestMapping("/logOut")
+
+    @RequestMapping("/test")
+    public String test() {
+
+        return "merchant/new-builtwechat";
+    }
+
+    @RequestMapping("/home")
+    public String test2() {
+
+        return "merchant/new-builtwechat";
+    }
+
+    @RequestMapping("/loginOut")
     public String logOut(HttpSession session) {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
 //        session.removeAttribute("user");
-        return "merchant/login";
+        return "merchant/login/login";
     }
 
 

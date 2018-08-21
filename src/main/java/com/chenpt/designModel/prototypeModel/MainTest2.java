@@ -1,7 +1,5 @@
 package com.chenpt.designModel.prototypeModel;
 
-import groovy.transform.Synchronized;
-
 import java.io.*;
 import java.util.*;
 import java.util.stream.Stream;

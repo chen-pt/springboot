@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.LinkedHashMap;
 
 /**
- * 版权所有(C) 2017 上海银路投资管理有限公司
+ * 版权所有(C)
  * 描述:
  * 作者: chen_pt
  * 创建日期: 2018/5/29
@@ -35,10 +35,11 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/merchant/login.html*", "anon"); //表示可以匿名访问
         filterChainDefinitionMap.put("/merchant/loginUser", "anon");
         filterChainDefinitionMap.put("/merchant/login","anon");
-        filterChainDefinitionMap.put("/merchant/reStr","anon");
-        filterChainDefinitionMap.put("/merchant/home","anon");
+//        filterChainDefinitionMap.put("/merchant/test","anon");
+//        filterChainDefinitionMap.put("/merchant/home","anon");
         filterChainDefinitionMap.put("/redis/test/add","anon");
         filterChainDefinitionMap.put("/static/**",  "anon");//静态资源不拦截
+        filterChainDefinitionMap.put("/templates/views/resource/**",  "anon");//静态资源不拦截
         filterChainDefinitionMap.put("/*", "authc");//表示需要认证才可以访问
         filterChainDefinitionMap.put("/**", "authc");//表示需要认证才可以访问
         filterChainDefinitionMap.put("/*.*", "authc");

@@ -4,7 +4,7 @@ spring:
         sentinel:
           master:
           nodes:
-        host: 172.20.10.71
+        host: 172.20.10.29
         password:
         port: 6379
         pool:
@@ -19,7 +19,7 @@ spring:
         dialect: mysql
         url: 'jdbc:mysql://127.0.0.1:3306/chenpt?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&allowMultiQueries=true'
         username: 'root'
-        password: 
+        password: 'root'
         driver-class-name: 'com.mysql.jdbc.Driver'
         type: com.alibaba.druid.pool.DruidDataSource
         initialSize: 1
@@ -45,10 +45,10 @@ spring:
         exclusions:
     thymeleaf:
         # tiles 定义文件所在的位置，多个用逗号隔开如"classpath:/templates/tiles-defs-member.xml,classpath:/templates/tiles-defs-order.xml"
-        tilesDefLocations: "classpath:/templates/"
-#        excludedViewNames: [member/*,demo/*,merchant/*,jk51b/*,store/*,wechat/*, product/*,login/*,account/*]
+        tilesDefLocations: "classpath:/templates/tiles-defs.xml"
+        excludedViewNames: [demo/*,merchant/*,store/*,product/*,login/*,account/*]
         cache: false
-#        mode: LEGACYHTML5
+        mode: LEGACYHTML5
 mybatis:
   mapperLocations: classpath:sqlmaps/**/*.xml
   typeAliasesPackage: com.chenpt.model
@@ -66,3 +66,7 @@ server:
     basedir:
     # secs
     backgroundProcessorDelay: 30
+#图片服务地址
+imageUrl:
+  testurl: "http://127.0.0.1:8080/demo/"
+  url: ""

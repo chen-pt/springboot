@@ -21,8 +21,8 @@
   <script charset="utf-8" src="/templates/views/resource/public/sui/js/layer/layer.js"></script>
 
   <!--[if lte IE 8]>
-  <script charset="utf-8" src="//100063.static.51jk.com/static/libs/ielte8.js"></script>
-  <![endif]-->
+  <!--<script charset="utf-8" src="//100063.static.51jk.com/static/libs/ielte8.js"></script>-->
+  <!--[endif]-->
 
 </head>
 <body class="login-bg">
@@ -33,13 +33,13 @@
 
   <form class="sui-form form-horizontal sui-validate" method="post" id="login_form">
     <p class="login-title"><i class="icon iconfont icon-icon-zongbuhoutai"></i>　<span>总部后台登录</span></p>
-    <p class="login-username"><input type="text" placeholder="帐号" class="username" name="userName" value=""></p>
+    <p class="login-username"><input type="text" placeholder="帐号" class="username" name="username"></p>
     <p class="login-pwd"><input type="password" placeholder="密码" class="password" name="password"></p>
-    <p class="login-code">
+    <!--<p class="login-code">
       <input class="auth-code" type="text" placeholder="验证码" name="vcode" data-rules="maxlength=4" maxlength="4">
       <img id="imgcode_img" style="cursor:pointer;" onclick="this.src='/common/code?t=' + Math.random()" alt="点击刷新"
            src="/common/code" title="点击刷新" class="verification">
-    </p>
+    </p>-->
     <label data-toggle="checkbox" class="checkbox-pretty remember-name inline">
       <input type="checkbox" name="rememberName" value="1"><span>记住帐号</span>
     </label>
@@ -66,93 +66,23 @@
 </div>
 
 
-<!-- 余额Modal-->
-<div id="balanceModalOne" tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
-        <h4 id="balanceModalTo" class="modal-title">预警提示</h4>
-      </div>
-      <div class="modal-body" style="margin-left:5%;font-size: 14px">
-        <div style="margin-top: 5%;">您的账户余额低于预警值，请及时充值，以免影响业务！</div>
-        <div style="margin-top: 3%;">如需帮助请，联系51客服：021-65798989</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large">我知道了</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 余额Modal-->
-<div id="balanceModalTwo" tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade" style="width: 550px">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
-        <h4 id="balanceModalToo" class="modal-title">预警提示</h4>
-      </div>
-      <div class="modal-body" style="margin-left:5%;font-size: 14px">
-        <div style="margin-top: 5%;">由于您未及时充值，系统已暂停相关业务；请及时充值以便恢复正常业务！</div>
-        <div style="margin-top: 3%;">如需帮助请，联系51客服：021-65798989</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large">我知道了</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <script type="text/javascript">
   $(".login-button").click(function () {
     var userName = $(".username").val();
     var passWord = $(".password").val();
-    var authCode = $(".auth-code").val();
-    if (userName.length != 0 && passWord.length != 0 && authCode.length != 0) {
+//    var authCode = $(".auth-code").val();
+    if (userName.length != 0 && passWord.length != 0 /*&& authCode.length != 0*/) {
       //$(".login-button").attr("data-target","");
       $.ajax({
         type: "post",
-        url: "/merchant/verify",
+        url: "/merchant/loginUser",
         data: $("#login_form").serialize(),
         dataType: "text",
         error: function () {
           $.alert("通讯异常，请稍后再试");
         },
-        complete: function(xhr,status) {
-          var sessionStatus = xhr.getResponseHeader('isWarning');
-          if(sessionStatus == '1'){
-            $('#balanceModalOne').modal('show');
-            $('#balanceModalOne').on('okHide', function () {
-              window.location.href = "/merchant/productList";
-            })
-          }
-          else if(sessionStatus == '2'){
-            $('#balanceModalTwo').modal('show');
-            $('#balanceModalTwo').on('okHide', function () {
-              window.location.href = "/merchant/productList";
-            })
-          }
-          else{
-            window.location.href = "/merchant/productList";
-          }
-        },
         success: function (data, status) {
-          var types = data;
-          if (types.toString() != "200") {
-            $("#imgcode_img").click();
-            $.alert(types.toString());
-          }
-          else {
-            if ($('[name="rememberName"]').parent().hasClass("checked")) {
-              document.cookie = "merchant_login_name=" + userName;
-            } else {
-              delCookie("merchant_login_name");
-            }
-//            window.location.href = "/merchant/productList";
-          }
-          return "";
+            window.location.href = "/merchant/home";
         }
       });
     }
@@ -162,9 +92,9 @@
     else if (passWord.length == 0) {
       $.alert("密码不能为空！");
     }
-    else if (authCode.length == 0) {
+    /*else if (authCode.length == 0) {
       $.alert("验证码不能为空！");
-    }
+    }*/
 
   });
   var userName = getCookie('merchant_login_name');
@@ -195,7 +125,7 @@
 </script>
 </body>
 </html>
-<script type="text/javascript">
+<!--<script type="text/javascript">
   $(function () {
     $.ajax({
       type: "GET",
@@ -208,5 +138,5 @@
       }
     })
   })
-</script>
+</script>-->
 
