@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -23,7 +22,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAutoConfiguration
 @ComponentScan(basePackages="com.chenpt")
 @EnableAsync
-@EnableCaching
 public class Bootstrap {
 
     public static final Logger logger = LoggerFactory.getLogger(Bootstrap.class);

@@ -4,34 +4,11 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Hello World!</title>
-    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
 </head>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="/templates/resource/public/sui/js/ajaxfileupload.js"></script>
+
 <body>
     <h1 th:inline="text">Hello.v.2</h1>
     <p th:text="${hello}"></p>
-    <input type="file" id="upload-file" value="选择图片" />
-    <a id="start-upload" href="javascript:void(0);" onclick="uploadFile();">开始上传</a>
 </body>
-<script>
 
-    function uploadFile(){
-        var fileObj = document.getElementById("upload-file").files[0];
-        console.log("99999999999999",fileObj);
-        // FormData 对象
-        var form = new FormData();
-        form.append("file", fileObj);// 文件对象
-         $.ajax({
-             type: 'POST',
-             url: "/hello/upload",
-             data: form,
-             processData:false,
-             success: function (data) {
-                alert(data);
-             }
-         })
-    }
-
-</script>
 </html>
