@@ -1,0 +1,78 @@
+<ul class="sui-nav nav-tabs nav-xlarge tab-navbar tab-light" style="margin-bottom:0;display: none" id="tab">
+  <li class="active"><a href="#discount-promotions" data-toggle="tab">满减活动</a></li>
+</ul>
+<input type="hidden" value="" id="Page1Data">
+<div id="discount-promotions">
+  <div class="control-group">
+    <label class="control-label ziti" style="vertical-align: baseline !important;">选择商品：</label>
+    <!-- 选择商品开始 -->
+    <div class="controls">
+      <select name="type" style="text-align: left">
+        <option value="0" selected>全部商品参加</option>
+        <option value="1">指定商品参加</option>
+        <option value="2">指定商品不参加</option>
+      </select>
+      <div class="GoodsIdsTypeCheck" style="display: none">
+        <span>按商品</span>
+        <a data-toggle="modal" data-target="#much_select_goods" style="cursor:pointer;color: rgb(107,197,164)">设置商品</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 是否抹零开始 -->
+  <div class="control-group">
+    <label class="control-label ziti"> 是否抹零<span class="lee_ts_info">*</span>：</label>
+
+    <!-- 是否抹零开始 -->
+    <div class="control-group" style="margin-bottom: 0">
+      <div class="controls" style="line-height: 20px">
+        <select name="ml-radio" id="moling" style="width: 160px;">
+          <option  value="3" selected>四舍五入到角</option>
+          <option  value="1">角以后抹去</option>
+          <option  value="4">四舍五入到分</option>
+          <option  value="2">分以后抹去</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <!-- 是否抹零结束 -->
+
+  <div class="control-group" id="rule_">
+    <label class="control-label ziti">优惠规则：</label>
+    <!-- 1、设置打折比率 -->
+    <div id="discount_direct">
+      <div id="discount_direct_area">
+        <input type="radio" name="rule_type" value="1">&nbsp;&nbsp;直接打&nbsp;
+        <input name="direct_discount" maxlength="3" class="input-small" data-rules="discount">&nbsp;&nbsp;折，&nbsp;
+        <input type="checkbox" name="discount_direct_is_limit" value="1">&nbsp;最多优惠&nbsp;
+        <input name="goods_money_limit" maxlength="6" class="input-small" data-rules="money|gt=0">&nbsp;&nbsp;元<br/>
+      </div>
+      <div class="sui-msg msg-tips" style="text-align: left">
+        <div class="msg-con">说明：打多少折只支持一位小数，在0.1~9.9之间，8.5折即为原价的85%。</div>
+        <s class="msg-icon"></s>
+      </div>
+
+      <div style="clear:both"></div>
+
+      <div style="float: left">
+        <input type="radio" name="rule_type" value="5"
+        >&nbsp;&nbsp;
+      </div>
+      <div style="float: left">
+        指定商品分别打折，按商品&nbsp;&nbsp;<a data-toggle="modal" data-target="#undefined_ll" id="set_each_goods_discount"
+                                   style="cursor:pointer"><span style="color: green">设置折扣</span></a>
+      </div>
+      <br/>
+      <div class="sui-msg msg-tips" style="text-align: left">
+        <div class="msg-con">说明：只有在选择 “指定商品参加” 时才能设置分别打折</div>
+        <s class="msg-icon"></s>
+      </div>
+      <div style="clear:both"></div>
+      <input type="hidden" name="rule_type" value="1">
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,145 @@
+html, body {
+	margin: 0;
+	height: 100%;
+	}
+::-webkit-scrollbar  
+		{  
+		    width:0px;  
+		    height: 10px;  
+		    background-color: white;  
+		}
+::-ms-scrollbar  
+		{  
+		    width:0px;  
+		    height: 10px;  
+		    background-color: white;  
+		}
+::-moz-scrollbar  
+		{  
+		    width:0px;  
+		    height: 10px;  
+		    background-color: white;  
+		}
+::scrollbar  
+		{  
+		    width:0px;  
+		    height: 10px;  
+		    background-color: white;  
+		}				  
+.sui-breadcrumb > li + li.no_content::before { 
+            	color: #ccc; 
+            	content: " "; 
+            	padding: 0 5px; 
+            	} 
+.sui-pagination ul>.active>a {
+            	background-color: #6bc5a4; 
+            	border-color: #87d2b7; 
+            	} 
+.sui-pagination ul>li>a { 
+            	color: #87d2b7; 
+            	}
+ .sidebar{
+
+ }            	
+.content{
+	min-height:80% ;
+}   
+.content .geolocation{
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: grey;
+	margin-top: 20px;
+	margin-bottom: 20px;
+} 
+.content .geolocation a{
+	cursor: pointer;
+}
+.content .geolocation a:hover{
+	color: #7e9ce2;
+}
+#search-goods-form label{
+	margin-top: 10px;
+}
+.content .geolocation a:nth-child(1){
+	color: #59c4aa;
+}
+.content .geolocation a:nth-child(2){
+	color: #59c4aa;
+}         	
+.sui-table tbody  .change{
+	text-align: center;
+	display: inline-block;
+	border-radius: 2px;
+	width: 35px;
+	height: 20px;
+	background: #c2c2c2;
+	border: 1px solid #c2c2c2;
+	text-decoration: none;
+} 
+.sui-table tbody  .change:hover{
+	background:#cecece;
+} 
+.sui-table tbody img{
+	width: 40px;
+}
+.sui-table tbody tr td:nth-child(8){
+	color: #30b08f;
+}
+.sui-table tbody tr td.do{
+	color: #48a7df;
+}
+
+.sui-table tbody  .change i{
+	color: #272727;
+	line-height: 20px;
+}
+.pull{
+	margin-top: 10px;
+	float: right;	
+}
+.pull a {
+	color: white;
+}
+.footer{
+	clear:both;
+}
+.footer .foot-main{
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	width: 100%;
+	height: 50px;
+	background:#fff;
+	border-top: 1px solid #e4e8e9;
+	text-align: center;
+	line-height: 50px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
+.footer .foot-place{
+	height: 50px;
+	width: 100%;
+}
+
+
+.flex-row {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: stretch;
+	justify-content: space-between; 
+}   
+.flex-cloum,.flex-cloum:hover{
+	min-width: 150px;
+	flex: 1;
+	border: 1px solid #ccc;
+	margin: 10px;
+	padding: 10px;
+	cursor: pointer;
+	color: #999999;
+	text-decoration: none;
+	}
+.flex-cloum h3{
+	text-align: center;
+	font-weight: bolder;
+	text-decoration: none;
+}

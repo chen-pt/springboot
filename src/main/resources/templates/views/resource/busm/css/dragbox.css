@@ -1,0 +1,43 @@
+.input-xxlarge {
+  width: 40% !important;
+}
+.drag-box {
+  display: inline;
+}
+.file-input input[type=file] {
+  display: none;
+}
+.file-input .file-container {
+  width: 40%;
+  display: inline-block;
+  position: relative;
+  height: auto;
+  border: 1px dashed #aaa;
+  border-radius: 4px;
+  text-align: center;
+  padding: 8px;
+  box-shadow: none;
+  color: #999;
+  transition: all .2s ease;
+}
+.file-input .file-container i {
+  display: block;
+  font-size: 64px;
+  line-height: 1;
+}
+.file-input .tips {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: bold;
+}
+.file-input .filecontent img {
+  max-height: 100px;
+}
+.file-input .filecontent.full-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+}

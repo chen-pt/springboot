@@ -1,0 +1,48 @@
+<ul class="sui-nav nav-tabs nav-xlarge tab-navbar tab-light" style="margin-bottom:0;display: none" id="tab">
+  <li class="active"><a href="#reduce-money-promotions" data-toggle="tab">满减活动</a></li>
+</ul>
+<input type="hidden" value="" id="Page1Data">
+<div id="reduce-money-promotions">
+  <div class="control-group">
+    <label class="control-label ziti" style="vertical-align: baseline !important;">选择商品：</label>
+    <!-- 选择商品开始 -->
+    <div class="controls">
+      <select name="type" style="text-align: left">
+        <option value="0" selected>全部商品参加</option>
+        <option value="1">指定商品参加</option>
+        <option value="2">指定商品不参加</option>
+      </select>
+      <div class="GoodsIdsTypeCheck" style="display: none">
+        <span>按商品</span>
+        <a data-toggle="modal" data-target="#much_select_goods" style="cursor:pointer;color: rgb(107,197,164)">设置商品</a>
+      </div>
+    </div>
+  </div>
+  <div class="control-group" id="rule_">
+    <label class="control-label ziti" style="vertical-align:baseline !important;">优惠规则：</label>
+    <div>
+      <div style="display: none">&nbsp;&nbsp;
+        <input type="hidden" name="rule_type" value="3">
+      </div>
+      <div >
+        <span>
+          满&nbsp;
+          <input name="each_full_money" class="input-small" data-rules="money">&nbsp;&nbsp;元，减&nbsp;&nbsp;
+          <input name="reduce_price" class="input-small" data-rules="money">&nbsp;&nbsp;元&nbsp;
+          <input type="button" value="+" style="height:20px;width:40px;" name="_add"/>
+        </span>
+      </div>
+      <div style="clear:both"></div>
+      <div class="sui-msg msg-tips" >
+        <div class="msg-con" >说明：最多可添加3级阶梯</div>
+        <s class="msg-icon"></s>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+.sui-breadcrumb > li + li.no_content::before {
+    color: #ccc; content: " "; padding: 0 5px;
+}
+.sui-pagination ul>.active>a {
+    background-color: #6bc5a4; border-color: #87d2b7;
+}
+.sui-pagination ul>li>a { color: #87d2b7; }
+.page_main{
+    width: 99%;
+
+}
+.defaultFirst{
+    background: #f4f7fc;
+}
+.page_main .copy{
+    color: #12b7f5;
+    display: inline-block;
+    margin-left: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    background:none;
+    border: none;
+}
+.page_main .mygreen{
+    color: #12b7f5;
+    margin-left: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.page_main textarea{
+    background: none;
+    border: none;
+    resize: none;
+    height: 16px;
+}
+.modal-body{
+    text-align: center;
+}
+.modal-body img{
+    margin: 10px 0 20px 0;
+}
+.deleteYN{
+    display: block;
+    color: #333;
+}
+#editModel .modal-body{
+    text-align: left;
+}
+#copyUrl{
+    width: 200px;
+    height: 60px;
+    line-height: 40px;
+    background: #3d3d3d;
+    color: white;
+    font-size:14px;
+    box-shadow: none;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -100px;
+}

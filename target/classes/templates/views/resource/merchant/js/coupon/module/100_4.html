@@ -1,0 +1,46 @@
+<!-- 现金券 开始 -->
+<div id="cash-coupon" class="tab-pane active">
+<div class="control-group">
+  <label class="control-label ziti" style="vertical-align:baseline !important;">选择商品<span class="lee_ts_info">*</span>：</label>
+  <div class="controls">
+    <div class="coupon-nav">
+      <ul class="sui-nav nav-tabs nav-xlarge tab-navbar tab-light" style="margin-bottom:0;display: none" id="tab">
+        <li class="active"><a href="#cash-coupon" data-toggle="tab">现金券</a></li>
+      </ul>
+    </div>
+
+    <div class="tab-content" id="coupon_type" style="border: 0px solid #DDDDDD; padding: 5px;line-height: 30px">
+
+        <!-- 选择商品开始 -->
+        <div class="controls">
+          <select name="type" style="margin-left: -4px;">
+            <option value="0" selected>全部商品参加</option>
+            <option value="2">指定商品参加</option>
+            <option value="3">指定商品不参加</option>
+          </select>
+          <div class="GoodsIdsTypeCheck" style="display: none">
+            <span>按商品</span>
+            <a data-toggle="modal" data-target="#much_select_goods" style="cursor:pointer">设置商品</a>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+<!-- 选择商品结束 -->
+<div class="control-group">
+  <label class="control-label ziti" style="vertical-align:baseline !important;">优惠规则<span class="lee_ts_info">*</span>：</label>
+  <!-- 1、有就减多少元 -->
+  <div class="controls">
+    <div>有就立减多少元：</div>
+    <div>
+      <div>
+        <input type="radio" name="rule_type" value="4" checked style="display: none">立减&nbsp;
+        <input name="direct_money" class="input-small" data-rules="money">&nbsp;&nbsp;元
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

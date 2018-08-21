@@ -1,0 +1,68 @@
+<!-- 在每个商品都要单独修改折扣的弹窗中使用 -->
+<div id="each-goods-discount-box" tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade"
+     data-width="700px">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" data-ok="modal" aria-hidden="true" class="sui-close">×</button>
+        <h4 class="modal-title">设置商品折扣</h4>
+      </div>
+      <input type="hidden" name="__goodsIdAndNum">
+      <div class="modal-body">
+        <div>
+          <input class="select_all_goods_checkbox" type="checkbox"><span>全选</span>&nbsp;
+          <label style="float:right;">已选择<span class="sui-text-danger select_goods_num">0</span>个商品参加活动</label>
+        </div>
+        <table style="width:100%;border: 1px solid #CCCCCC;">
+          <tbody>
+          <tr>
+            <th width="40%">赠品标题</th>
+            <th width="10%">现价（元）</th>
+            <th width="25%">打几折</th>
+            <th width="25%">最多优惠（元）</th>
+          </tr>
+          </tbody>
+        </table>
+        <div style="max-height: 330px;overflow-y: scroll;border: 1px solid #CCCCCC;min-height: 332px;">
+          <table class="select_goods_list" style="width:100%;"></table>
+        </div>
+      </div>
+      <p>
+        <span style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;提示：可以给不同的商品分别设置打折，最多优惠0元代表优惠金额无上限</span>
+      </p>
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;批量修改选中商品打：&nbsp;
+        <input name="batch_change_goods_discount" size="6">&nbsp;&nbsp;折&nbsp;&nbsp;&nbsp;
+        <button class="batch_change_goods_discount_button">确认修改</button>
+      </p>
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;批量修改选中商品最多优惠：&nbsp;
+        <input name="batch_change_goods_max_reduce" size="6">&nbsp;&nbsp;元&nbsp;&nbsp;&nbsp;
+        <button class="batch_change_goods_max_reduce_button">确认修改</button>
+      </p>
+      <div class="modal-footer">
+        <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="EGDBox_template" type="text/template">
+  <tr>
+    <td align="left" style="word-break: break-all;width:40%">
+      <label data-toggle="checkbox" class="checkbox-pretty inline">
+        <input type="checkbox" name="gid"><span>[%=(it.goods_title?it.goods_title:"") %]&nbsp;([%=(it.goods_code?it.goods_code:"") %])</span>
+      </label>
+    </td>
+    <td align="right" style="word-break: break-all;width:10%">[%=(it.shop_price?(it.shop_price/100).toFixed(2):"") %]</td>
+    <td align="right" style="word-break: break-all;width:25%">
+      <input name="discount" value="[%=(it.discount?it.discount:'') %]">
+    </td>
+    <td align="right" style="word-break: break-all;width:25%">
+      <input name="maxReduce" value="[%=(it.maxReduce?it.maxReduce:'0') %]">
+      <input type="hidden" name="goods_id" value="[%=(it.goods_id?it.goods_id:'') %]"/>
+      <input type="hidden" name="goods_title" value="[%=(it.goods_title?it.goods_title:'') %]"/>
+      <input type="hidden" name="shop_price" value="[%=(it.shop_price?(it.shop_price/100).toFixed(2):'') %]"/>
+    </td>
+  </tr>
+</script>

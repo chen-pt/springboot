@@ -1,0 +1,45 @@
+
+    <table align="center" valign="middle" border="1px">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>sex</th>
+            <th>age</th>
+            <th>index</th>
+            <th>count</th>
+            <th>size</th>
+            <th>current</th>
+            <th>even</th>
+            <th>odd</th>
+            <th>first</th>
+            <th>last</th>
+        </tr>
+        <tr th:each="user,userVs: ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <!-- 三元运算符 -->
+            <td th:text="(${user.sex} == 1)?'男' : '女'"></td>
+
+            <!-- <td th:text="${user.age gt 25 ? '青年' : '青少年'}"></td> -->
+            <!-- if unless 条件判断; lt:小于;ge:大于等于;gt:大于  -->
+            <!-- if: 等号后面的条件成立时，显示标签内容-->
+            <!-- unless: 与if刚好相反-->
+            <td>
+                <!-- <span th:if="${user.age lt 25}">少年</span>
+                <span th:unless="${user.age ge 25}">年轻</span> -->
+                <!-- switch case -->
+                <span th:switch="${user.age}">
+                    <span th:case="25">中间年龄</span>
+                    <span th:case="*">其他两端的年龄</span>
+                </span>
+            </td>
+            <td th:text="${userVs.index}">状态序号，从0开始</td>
+            <td th:text="${userVs.count}">状态序号，从1开始</td>
+            <td th:text="${userVs.size}"></td>
+            <td th:text="${userVs.current.name}"></td>
+            <td th:text="${userVs.even}">奇数</td>
+            <td th:text="${userVs.odd}">偶数</td>
+            <td th:text="${userVs.first}">是否第一条数据</td>
+            <td th:text="${userVs.last}">是否最后一条数据</td>
+        </tr>
+    </table>

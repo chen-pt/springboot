@@ -1,0 +1,98 @@
+<style>
+  .auto_margin input {
+    margin: 0 10px;
+  }
+</style>
+<ul class="sui-nav nav-tabs nav-xlarge tab-navbar tab-light" style="margin-bottom:0;display: none" id="tab">
+  <li class="active"><a href="#group-booking-promotions" data-toggle="tab" id="pin">拼团活动</a></li>
+</ul>
+<input type="hidden" value="" id="Page1Data">
+<div id="group-booking-promotions">
+  <div class="control-group">
+    <label class="control-label ziti" style="vertical-align: baseline !important;">选择商品：</label>
+    <!-- 选择商品开始 -->
+    <div class="controls">
+      <select name="type" style="text-align: left">
+        <option value="0" selected>全部商品参加</option>
+        <option value="1">指定商品参加</option>
+        <option value="2">指定商品不参加</option>
+      </select>
+      <div class="GoodsIdsTypeCheck" style="display: none">
+        <span>按商品</span>
+        <a data-toggle="modal" data-target="#much_select_goods" style="cursor:pointer;color: rgb(107,197,164)">设置商品</a>
+      </div>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label ziti" style="vertical-align:baseline">拼团价格：</label>
+    <div style="line-height: 30px;display: block" id="group_price_div">
+      <select name="rule_type" style="width: 240px;">
+      <option value="1">指定商品统一设置团购价，固定价格</option>
+      <option value="2" style="display: none">指定商品分别设置团购价，固定价格</option>
+      <option value="3" >指定商品统一设置团购价，打几折</option>
+      <option value="4" style="display: none">指定商品分别设置团购价，打几折</option>
+    </select>
+      <br/>
+      <div class="auto_margin">
+        <span>统一拼团价<input name="group_price" class="input-small" data-rules="money|gt=0">元，
+          成团人数<input name="group_member_num_1" class="input-small" data-rules="digits|gt=1">人，
+          限购<input name="goods_limit_num_1" class="input-small" data-rules="digits|gt=0">件
+        </span>
+      </div>
+      <div style="display: none">
+        <a data-target="#undefined_ll" id="set_group_booking_price_button" data-toggle="modal" href="javascript:void(0);"
+           style="color: rgb(107,197,164)">设置拼团价</a>
+      </div>
+      <div class="auto_margin" style="display: none">
+        <span>统一打<input name="group_discount" class="input-small" data-rules="discount">折，
+          成团人数<input name="group_member_num_3" class="input-small" data-rules="digits|gt=1">人，
+          限购<input name="goods_limit_num_3" class="input-small" data-rules="digits|gt=0">件
+          <br/>
+          <select name="ml_round_3" style="width: 160px">
+            <option value="3" selected>四舍五入到角</option>
+            <option value="1">角以后抹去</option>
+            <option value="4">四舍五入到分</option>
+            <option value="2">分以后抹去</option>
+          </select>
+          <input type="checkbox" name="max_reduce_sign_3">
+          最多优惠<input name="max_reduce_3" class="input-small" data-rules="money">元
+        </span>
+      </div>
+      <div class="auto_margin" style="display: none">
+        <a data-target="#undefined_ll" id="set_group_booking_discount_button" data-toggle="modal" href="javascript:void(0);"
+           style="color: rgb(107,197,164)">设置拼团折扣价</a>
+        <select name="ml_round_4" style="width: 160px;margin-left: 10px">
+          <option value="3" selected>四舍五入到角</option>
+          <option value="1">角以后抹去</option>
+          <option value="4">四舍五入到分</option>
+          <option value="2">分以后抹去</option>
+        </select>
+        <input type="checkbox" name="max_reduce_sign_4">
+        最多优惠<input name="max_reduce_4" class="input-small" data-rules="money">元
+      </div>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label ziti" style="vertical-align:baseline">拼团时效：</label>
+    <div id="group_live_time_div">
+      开团后
+      <select name="group_live_time" style="width: 110px">
+        <option value="24">一天（24小时）</option>
+        <option value="48">二天（48小时）</option>
+        <option value="72">三天（72小时）</option>
+        <option value="-1">自定义</option>
+      </select>
+      内有效，
+      <div style="display: inline-table">
+        超过时间自动取消，付款原路返回
+      </div>
+      <div class="auto_margin" style="display: none;">
+        超过<input name="group_live_time" class="input-small" data-rules="digits|gt=0|lt=73">小时后自动取消，付款原路返回<br/>
+        <div class="sui-msg msg-tips">
+          <div class="msg-con">不能超过72小时</div>
+          <s class="msg-icon"></s>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

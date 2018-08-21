@@ -1,0 +1,74 @@
+<!-- 现金券 开始 -->
+<div id="discount-coupon" class="tab-pane active">
+<div class="control-group">
+  <label class="control-label ziti" style="vertical-align:baseline !important;">选择商品<span class="lee_ts_info">*</span>：</label>
+
+<ul class="sui-nav nav-tabs nav-xlarge tab-navbar tab-light" style="margin-bottom:0;display: none" id="tab">
+  <li class="active"><a href="#discount-coupon" data-toggle="tab">打折券</a></li>
+</ul>
+<div class="tab-content" id="coupon_type" style="border: 0px solid #DDDDDD; padding: 5px;line-height: 30px">
+
+    <!-- 选择商品开始 -->
+    <div class="controls">
+      <select name="type" style="margin-left: -4px;">
+        <option value="0" selected>全部商品参加</option>
+        <option value="2">指定商品参加</option>
+        <option value="3">指定商品不参加</option>
+      </select>
+      <div class="GoodsIdsTypeCheck" style="display: none">
+        <span>按商品</span>
+        <a data-toggle="modal" data-target="#much_select_goods" style="cursor:pointer">设置商品</a>
+      </div>
+    </div>
+</div>
+  </div>
+    <!-- 选择商品结束 -->
+
+    <!-- 是否抹零开始 -->
+<div class="control-group">
+  <label class="control-label ziti"  style="vertical-align:baseline !important;">是否抹零<span class="lee_ts_info">*</span>：</label>
+
+      <div class="controls" style="line-height: 20px">
+        <select name="ml-radio" style="width: 160px;">
+          <option  value="3" selected>四舍五入到角</option>
+          <option  value="1">角以后直接抹去</option>
+          <option  value="4">四舍五入到分</option>
+          <option  value="2">分以后直接抹去</option>
+        </select>
+      </div>
+</div>
+    <!-- 是否抹零结束 -->
+
+    <!-- 满多少件，打多少折 -->
+<div class="control-group">
+  <label class="control-label ziti"  style="vertical-align:baseline !important;">优惠规则<span class="lee_ts_info">*</span>：</label>
+
+    <div>满多少件，打多少折：</div>
+    <div>
+              <span>
+                <input type="radio" name="rule_type" value="5" checked >&nbsp;&nbsp;第二件打&nbsp;
+                <input name="discount" class="input-small" data-rules="discount">&nbsp;
+                折，<input type="checkbox" name="max_reduce_sign">&nbsp;最多优惠&nbsp;
+                <input name="max_reduce" class="input-small" data-rules="digits">&nbsp;&nbsp;件
+              </span>
+      <hr/>
+      <div style="float: left">
+        <input type="radio" name="rule_type" value="2">&nbsp;&nbsp;
+      </div>
+      <div style="float: left">
+                <span>
+                  满&nbsp;
+                  <input name="meet_num" class="input-small" data-rules="digits">&nbsp;&nbsp;件，打&nbsp;
+                  <input name="discount" class="input-small" data-rules="discount">&nbsp;&nbsp;折&nbsp;
+                  <input type="button" value="+" style="height:20px;width:40px;" name="_add">
+                </span>
+      </div>
+      <div style="clear:both"></div>
+      <div class="sui-msg msg-tips" style="text-align: left;margin: 10px auto;">
+        <div class="msg-con">说明：最多可添加3级阶梯</div>
+        <s class="msg-icon"></s>
+      </div>
+    </div>
+</div>
+
+</div>

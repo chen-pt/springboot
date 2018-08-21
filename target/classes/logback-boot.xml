@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- 文件输出格式 -->
+    <property name="PATTERN" value="%yellow(%-12(%d{HH:mm:ss.SSS})) |-%highlight(%-5level) [%thread] %cyan(%c [%L]) -| %msg%n"/>
+    <property name="project_name" value="springboot"></property>
+
+    <!--文件存放目录-->
+    <property name="log_root" value="/var/log/java/"></property>
+    <property name="dev_log_path" value="${log_root}/${project_name}/"/>
+    <property name="test_log_path" value="${log_root}/${project_name}/"/>
+    <property name="prd_log_path" value="${log_root}/${project_name}/"/>
+    <!--文件存放天数-->
+    <property name="log_info_max" value="7"></property>
+    <property name="debug_info_max" value="7"></property>
+    <property name="error_info_max" value="7"></property>
+
+    <!-- 开发 -->
+    <springProfile name="dev">
+        <logger name="com.chenpt" level="trace"/>
+        <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>debug</level>
+            </filter>
+            <encoder>
+                <pattern>${PATTERN}</pattern>
+            </encoder>
+        </appender>
+        <appender name="r-debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>INFO</level>
+                <onMatch>DENY</onMatch>
+                <onMismatch>NEUTRAL</onMismatch>
+            </filter>
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>WARN</level>
+                <onMatch>DENY</onMatch>
+                <onMismatch>NEUTRAL</onMismatch>
+            </filter>
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>ERROR</level>
+                <onMatch>DENY</onMatch>
+                <onMismatch>NEUTRAL</onMismatch>
+            </filter>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${dev_log_path}/%d{yyyyMMdd/HH}.debug</fileNamePattern>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${PATTERN}</pattern>
+            </encoder>
+        </appender>
+        <appender name="r-info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>INFO</level>
+            </filter>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${dev_log_path}/%d{yyyyMMdd/HH}.info</fileNamePattern>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${PATTERN}</pattern>
+            </layout>
+        </appender>
+        <appender name="r-error" class="ch.qos.logback.core.FileAppender">
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>ERROR</level>
+            </filter>
+            <file>${log_root}/${project_name}.err.log</file>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${PATTERN}</pattern>
+            </layout>
+        </appender>
+        <!--<logger name="com.jk51.persistence" level="debug"/>-->
+        <!--<logger name="com.jk51.persistence" level="debug"/>-->
+        <!--<logger name="org.thymeleaf" level="warn"/>-->
+        <root level="INFO">
+            <appender-ref ref="stdout"/>
+            <appender-ref ref="r-debug"/>
+            <appender-ref ref="r-info"/>
+            <appender-ref ref="r-error"/>
+        </root>
+    </springProfile>
+
+    <!-- 测试 -->
+    <springProfile name="test">
+        <logger name="com.jk51.modules" level="trace"/>
+        <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>debug</level>
+            </filter>
+            <encoder>
+                <pattern>${PATTERN}</pattern>
+            </encoder>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="stdout"/>
+        </root>
+    </springProfile>
+
+    <!-- 生产 -->
+    <springProfile name="product">
+        <appender name="r-debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!-- Support multiple-JVM writing to the same log file -->
+            <prudent>true</prudent>
+            <file>${log_root}/${project_name}.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${prd_log_path}/%d{yyyyMMdd/HH}.debug</fileNamePattern>
+            </rollingPolicy>
+
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>INFO</level>
+                <onMatch>DENY</onMatch>
+                <onMismatch>NEUTRAL</onMismatch>
+            </filter>
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>WARN</level>
+                <onMatch>DENY</onMatch>
+                <onMismatch>NEUTRAL</onMismatch>
+            </filter>
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>ERROR</level>
+                <onMatch>DENY</onMatch>
+                <onMismatch>NEUTRAL</onMismatch>
+            </filter>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${PATTERN}</pattern>
+            </layout>
+        </appender>
+        <appender name="r-info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!-- Support multiple-JVM writing to the same log file -->
+            <prudent>true</prudent>
+            <file>${log_root}/${project_name}.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${prd_log_path}/%d{yyyyMMdd/HH}.info</fileNamePattern>
+            </rollingPolicy>
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>INFO</level>
+            </filter>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${PATTERN}</pattern>
+            </layout>
+        </appender>
+        <appender name="r-error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!-- Support multiple-JVM writing to the same log file -->
+            <prudent>true</prudent>
+            <file>${log_root}/${project_name}.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${prd_log_path}/error-%d{yyyyMM}.log</fileNamePattern>
+            </rollingPolicy>
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>ERROR</level>
+            </filter>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${prd_log_path}/error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${PATTERN}</pattern>
+            </layout>
+        </appender>
+
+        <!--<logger name="com.jk51.persistence" level="debug"/>-->
+        <!--<logger name="org.thymeleaf" level="warn"/>-->
+        <!--<logger name="com.jk51.persistence" level="debug"/>-->
+        <root level="info">
+            <appender-ref ref="r-debug"/>
+            <appender-ref ref="r-info"/>
+            <appender-ref ref="r-error"/>
+        </root>
+    </springProfile>
+</configuration>

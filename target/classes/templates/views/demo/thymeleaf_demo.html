@@ -1,0 +1,18 @@
+
+<p>测试单个变量：</p>
+<p>Hello,<span th:text="${time}"></span></p>
+
+<p th:text="${message_zh}"></p>
+<p > Welcome to our grocery store!</p>
+
+<h2>当前时间：<span th:text="${#dates.format(curDate, 'yyyy-MM-dd HH:mm:ss.SSS')}"></span></h2>
+<br/>
+<h2>随机金额：<span th:text="${#numbers.formatDecimal(money, 0, 2)}"></span></h2>
+<h2>随机金额：<span th:text="${#numbers.formatDecimal(money, 3, 2)}"></span></h2>
+<hr/>
+<h2>随机金额2：<span th:text="${#numbers.formatDecimal(money2, 0, 2)}"></span></h2>
+<h2>随机金额2：<span th:text="${#numbers.formatDecimal(money2, 5, 2)}"></span></h2>
+<br/>
+<h2>自定义属性：<span th:attr="myDate=${#dates.format(curDate, 'yyyy-mm-dd')}, myMoney=${money}"></span></h2>
+<hr/>
+<a href="http://www.baidu.com" th:href="@{http://www.baidu.com}">百度</a>

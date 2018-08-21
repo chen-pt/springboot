@@ -1,0 +1,28 @@
+.sui-form .control-group {
+							width: 100%;
+						}
+						
+						.sui-form .control-group .control-label {
+							width: 30%;
+						}
+						
+						.sui-form .control-group .controls {
+							width: 60%;
+						}
+						
+						#city select:not(:first-child) {
+							margin-left: 10px;
+						}
+						
+						.ul-list {
+							list-style: none;
+						}
+						
+						.ul-list li {
+							margin-bottom: 10px;
+						}
+						
+						.ul-list p {
+							margin: 0 0 5px 0;
+							font-weight: bold
+						}

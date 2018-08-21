@@ -1,0 +1,87 @@
+<!-- 满赠券 开始 -->
+<div id="gift-coupon" class="tab-pane">
+<div class="control-group">
+  <label class="control-label ziti" style="vertical-align:baseline !important;">选择商品<span class="lee_ts_info">*</span>：</label>
+
+<ul class="sui-nav nav-tabs nav-xlarge tab-navbar tab-light" style="margin-bottom:0;display: none" id="tab">
+  <li class="active"><a href="#gift-coupon" data-toggle="tab">满赠券</a></li>
+</ul>
+
+<!-- 1，选择购买商品及组合方式-->
+<div>选择购买商品及组合方式：</div>
+<div>
+  <input type="radio" name="calculateBase" value="1" checked>&nbsp;&nbsp;购买选定商品中的【某一种】商品<br/>
+  <div class="sui-msg msg-tips" style="margin:10px auto;">
+    <div class="msg-con">举例：购买A,B,C三种商品中，只有买同一种商品满3件（或满300元）送1件。</div>
+    <s class="msg-icon"></s>
+  </div>
+  <br/>
+  <input type="radio" name="calculateBase" value="2">&nbsp;&nbsp;购买选定商品中【任何】商品(不限品种)<br/>
+  <div class="sui-msg msg-tips" style="margin:10px auto;">
+    <div class="msg-con">举例：购买A,B,C三种商品中，不管哪几种商品只要满3件（或满300元）送1件。</div>
+    <s class="msg-icon"></s>
+  </div>
+  <br/>
+  <a data-toggle="modal" data-target="#much_select_goods" class="sui-btn btn-large btn-primary"
+     style="cursor:pointer">选择商品</a>&nbsp;&nbsp;您已选择<span id="select_goods_num">0</span>种商品
+</div>
+</div>
+
+<!-- 2，设置赠送条件 -->
+<div class="control-group">
+  <label class="control-label ziti" style="vertical-align:baseline !important;">优惠规则<span class="lee_ts_info">*</span>：</label>
+
+<div>设置赠送条件：</div>
+<div >
+  <div>
+    <input type="radio" name="rule_type" value="1">&nbsp;&nbsp;满几件赠送几件
+  </div>
+  <div>
+                <span>
+                  满&nbsp;
+                  <input name="meetNum" class="input-small" maxlength="6" data-rules="digits">&nbsp;&nbsp;件，送&nbsp;&nbsp;
+                  <input name="sendNum" class="input-small" maxlength="6" data-rules="digits">&nbsp;&nbsp;件&nbsp;
+                  <input type="button" value="+" style="height:20px;width:40px;" name="_add"/>
+                </span>
+  </div>
+  <div class="sui-msg msg-tips" style="text-align: left;margin:10px auto;">
+    <div class="msg-con">说明：最多可添加3级阶梯</div>
+    <s class="msg-icon"></s>
+  </div>
+  <div class="hide_reduce_gift">
+    <input type="radio" name="rule_type" value="2">&nbsp;&nbsp;满几元赠送几件&nbsp;
+  </div>
+  <div class="hide_reduce_gift">
+                <span>
+                  满&nbsp;
+                  <input name="meetMoney" class="input-small" maxlength="6" data-rules="money">&nbsp;&nbsp;元，送&nbsp;&nbsp;
+                  <input name="sendNum" class="input-small" maxlength="6" data-rules="digits">&nbsp;&nbsp;件&nbsp;
+                  <input type="button" value="+" style="height:20px;width:40px;" name="_add"/>
+                </span>
+  </div>
+  <div class="sui-msg msg-tips hide_reduce_gift" style="text-align: left;margin: 10px auto;">
+    <div class="msg-con">说明：最多可添加3级阶梯</div>
+    <s class="msg-icon"></s>
+  </div>
+  <br/>
+</div>
+
+<!-- 3、选择赠送的商品 开始 -->
+<div>选择赠送的商品：</div>
+<div >
+  <!--<input type="radio" name="sendType" value="1">&nbsp;&nbsp;送任意一种商品（多种赠品中任意选一种）<br/>-->
+  <input type="radio" name="sendType" value="3" checked style="display: none">送任何不同种商品（多种赠品中随便选几种）<br/>
+  <!--<input type="radio" name="sendType" value="4">&nbsp;&nbsp;送固定商品（多种赠品一起送）<br/>-->
+  <div>
+    <a data-toggle="modal" data-target="#select-gifts-box"
+       class="sui-btn btn-large btn-primary gift_box_button"
+       style="cursor:pointer">选择赠品</a>&nbsp;&nbsp;您已选择<span id="select_gift_num">0</span>种赠品<br/>
+  </div>
+  <div class="sui-msg msg-tips" style="text-align: left;margin: 10px auto;">
+    <div class="msg-con">提示：可以单独设置专属赠品商品，赠品商品不可上架销售。 <a href="/merchant/gift" target="_blank"
+                                                        style="color:#0033FF">点击添加赠品商品</a></div>
+    <s class="msg-icon"></s>
+  </div>
+</div>
+</div>
+</div>

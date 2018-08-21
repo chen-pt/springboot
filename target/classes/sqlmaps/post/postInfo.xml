@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenpt.mapper.PostInfoMapper" >
+  <resultMap id="PostInfoMap" type="com.chenpt.model.PostInfo" >
+    <id column="post_id" property="postId" jdbcType="BIGINT" />
+    <result column="topic_id" property="topicId" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="imgs" property="imgs" jdbcType="VARCHAR" />
+    <result column="guide_ids" property="guideIds" jdbcType="VARCHAR" />
+    <result column="post_type" property="postType" jdbcType="TINYINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    post_id, topic_id, title, summary, imgs, guide_ids, post_type, user_id, create_time
+  </sql>
+
+  <select id="getLst" resultMap="PostInfoMap" >
+    select
+    <!--<include refid="Base_Column_List" />-->
+    U.*
+    from post_info U WHERE u.post_id=2
+  </select>
+
+</mapper>

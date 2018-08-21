@@ -1,0 +1,101 @@
+spring:
+    #redis服务器相关配置
+    redis:
+        sentinel:
+          master:
+          nodes:
+        host: 172.20.10.29
+        password:
+        port: 6379
+        pool:
+          min-idle: 20
+          max-idle: 20
+          max-active: 100
+          max-wait: -1
+        timeout: 1000
+        #通过@Cacheable代理的缓存默认失效时间(单位：秒)
+        cacheableDefaultExpSec: 12000
+    session:
+        store-type:
+          none
+    datasource:
+        dialect: mysql
+#        url: 'jdbc:mysql://172.20.10.29:3306/chenpt?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false'
+        url: 'jdbc:mysql://localhost:3306/chenpt'
+        username: 'root'
+        password: 'root'
+        driver-class-name: 'com.mysql.jdbc.Driver'
+        type: com.alibaba.druid.pool.DruidDataSource
+        initialSize: 1
+        minIdle : 5
+        maxActive: 10
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: SELECT 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        filters: stat,wall,slf4j
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        useGlobalDataSourceStat: true
+        monitorUserName: admin
+        monitorPassword: admin
+        resetEnable: false
+        allow:
+        deny:
+        exclusions:
+    thymeleaf:
+        # tiles 定义文件所在的位置，多个用逗号隔开如"classpath:/templates/tiles-defs-member.xml,classpath:/templates/tiles-defs-order.xml"
+        tilesDefLocations: "classpath:/templates/tiles-defs.xml*"
+        excludedViewNames: [merchant/*]
+        cache: false
+        mode: LEGACYHTML5  #去除HTML格式验证
+# 消费者的组名
+apache:
+  rocketmq:
+    consumer:
+      PushConsumer: PushConsumer
+# 生产者的组名
+    producer:
+      producerGroup: Producer
+# NameServer地址
+    namesrvAddr: 127.0.0.1:9876
+#mq:
+#  namesrvAddr: 172.20.10.18:9876
+##  namesrvAddr: 127.0.0.1:8082
+#  producerGroup: CommonsProducer
+#  timeout: 3000
+#  retryTimes: 5
+#mns管理
+#mns:
+#  MNSEndpoint: 'http://1704256822322729.mns.cn-hangzhou.aliyuncs.com/'
+#  accessId: 'LTAIxqQBJq89MWnA'
+#  accessKey: '4dITLAdbiBCr0mgXtY3Ne3Ocm9uvde'
+#配置日志
+logging:
+  config : classpath:logback-boot.xml
+mybatis:
+  mapperLocations: classpath:sqlmaps/**/*.xml
+  typeAliasesPackage: com.chenpt.model
+server:
+  #会话超时时间，原则上要略大于redis session生效时间
+  port: 8081
+  sessionTimeout: 300000
+  contextPath: /
+  # Tomcat特性相关
+  tomcat:
+    accessLogEnabled: false
+    protocolHeader: x-forwarded-proto
+    remoteIpHeader: x-forwarded-for
+    connectionTimeout: 180000
+    basedir:
+    # secs
+    backgroundProcessorDelay: 30
+#图片服务地址
+imageUrl:
+  testurl: "http://127.0.0.1:8080/demo/"
+  url: "https://jkosshash.oss-cn-shanghai.aliyuncs.com/"
+

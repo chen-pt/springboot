@@ -1,0 +1,85 @@
+<div id="group_booking_price_box" tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade"
+     data-width="700px">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" data-ok="modal" aria-hidden="true" class="sui-close">×</button>
+        <h4 class="modal-title">设置团购规则</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+          <label data-toggle="checkbox" class="checkbox-pretty select_all_checkbox">
+            <input type="checkbox"><span>全选</span>
+          </label>
+        </div>
+        <table style="width:100%;border: 1px solid #CCCCCC;">
+          <tbody>
+          <tr>
+            <th align="center" width="40%">商品标题</th>
+            <th align="center" width="15%">现价（元）</th>
+            <th align="center" width="15%">团购价（元）</th>
+            <th align="center" width="15%">成团人数</th>
+            <th align="center" width="15%">限购数量</th>
+          </tr>
+          </tbody>
+        </table>
+        <div style="max-height: 330px;overflow-y: scroll;border: 1px solid #CCCCCC;min-height: 332px;">
+          <table class="selected_goods_list" style="width:100%;"></table>
+        </div>
+        <table style="margin: 5px 0">
+          <tr>
+            <td>
+              批量修改选中商品团购价<input name="batch_group_booking_price" style="width: 50px;margin: 0 10px">元
+            </td>
+            <td><input type="button" name="batch_group_booking_price_button" value="修改" style="margin: 0 20px"></td>
+          </tr>
+          <tr>
+            <td>
+              批量修改选中商品团购人数<input name="batch_group_booking_member_num" style="width: 50px;margin: 0 10px">人
+            </td>
+            <td><input type="button" name="batch_group_booking_member_num_button" value="修改" style="margin: 0 20px">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              批量修改选中每人限购数量<input name="batch_group_booking_limit_num" style="width: 50px;margin: 0 10px">件
+            </td>
+            <td><input type="button" name="batch_group_booking_limit_num_button" value="修改" style="margin: 0 20px"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="gbp_show_select_goods" type="text/template">
+  [% for (var i = 0; i < it.length; i++){ %]
+  <tr style="text-align: center" class="can_be_del">
+    <td style="width: 41%;text-align: left">
+      <label data-toggle="checkbox" class="checkbox-pretty">
+        <input type="checkbox"><span>[%=it[i].goods_title%]（[%=it[i].goods_code%]）</span>
+      </label>
+    </td>
+    <td style="width: 15.5%;">
+      [%=(it[i].shop_price / 100).toFixed(2) %]
+    </td>
+    <td style="width: 15.5%;">
+      <input name="group_price" value="[%=it[i].group_price ? it[i].group_price : '' %]" style="width: 72px">
+    </td>
+    <td style="width: 15.5%;">
+      <input name="group_member_num" value="[%=it[i].group_member_num ? it[i].group_member_num : 2 %]"
+             style="width: 36px">
+    </td>
+    <td>
+      <input name="goods_limit_num" value="[%=it[i].goods_limit_num ? it[i].goods_limit_num : 1 %]" style="width: 36px">
+      <input type="hidden" name="goods_id" value="[%=it[i].goods_id %]">
+      <input type="hidden" name="goods_code" value="[%=it[i].goods_code %]">
+      <input type="hidden" name="goods_title" value="[%=it[i].goods_title %]">
+      <input type="hidden" name="shop_price" value="[%=it[i].shop_price/100 %]">
+    </td>
+  </tr>
+  [% } %]
+</script>

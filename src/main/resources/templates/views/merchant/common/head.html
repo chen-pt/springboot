@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--suppress HtmlUnknownTarget, JSUnresolvedLibraryURL -->
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+</head>
+
+<body>
+<div th:fragment="head">
+  <div id="music"></div>
+
+  <!-- Modal-->
+
+  <div id="notice_alert" tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
+          <h4 id="myModalLabel" class="modal-title">订单消息</h4>
+        </div>
+
+        <div class="modal-body">
+          <div class="clearfix" style="width: 300px; margin:auto;">
+            　　　　　　 <img style="width: 50px; margin: 15px 15px 0 0"
+                        src="/templates/views/resource/merchant/img/img_neworder.png" class="pull-left">
+            <div style="overflow:hidden">
+              <div STYLE="font-size: 15px;font-weight: 600">您有新订单，请及时处理！</div>
+              <div id="look_new_order" style="margin: 10px auto 0 auto"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer" style="text-align: left">
+          <a href="/merchant/remindSetting" style="font-size: 14px;">提醒设置</a>
+          <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large" style="margin-left:70%">好的
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--盘点单提醒-->
+  <div id="notice_pandian_alert" tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
+          <h4 id="pandian_ModalLabel" class="modal-title">盘点计划消息</h4>
+        </div>
+
+        <div class="modal-body">
+          <div class="clearfix" style="width: 300px; margin:auto;">
+            　　　　　　 <img style="width: 50px; margin: 15px 15px 0 0"
+                        src="/templates/views/resource/merchant/img/img_neworder.png" class="pull-left">
+            <div style="overflow:hidden">
+              <div STYLE="font-size: 15px;font-weight: 600">你有新的盘点单生成！</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer" style="text-align: left">
+          <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large" style="margin-left:40%"
+                  onclick="javascrtpt:window.location.href='/merchant/pandianListView'">去盘点
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="noticeModal" tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade"
+       style="width: 600px;overflow-x: hidden">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
+          <h4 id="" class="modal-title">升级提示</h4>
+        </div>
+        <div class="modal-body">
+          <div class="notice-box" style="width: 580px;overflow-x: hidden;">
+            <ul style="margin-left:10px;font-size: 14px">
+              <li>
+                <p style="text-align: center" class="title" th:text="${session.noticeTitle_shop}"></p>
+                <div class="controls" th:utext="${session.noticeContent_shop}"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="" style="float: left;margin:5px 10px;" onclick="getNoticeMore()">更多版本</a>
+          <button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">我知道了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="top-bar lee_top" id="title" style="border-bottom:0px solid #f2f2f2"
+       th:if="${session.noticeTitle_shop} != null">
+    <div class="clearfix ">
+      <div class="pull-left">
+                        <span class="logo"><img class="logo_img" th:src="${session.shopLogurl}" style="height: 40px;"/>欢迎，
+                            <span class="user_name" th:text="${session.shortMessageSign}"></span>使用<span
+                            class="shop_title"></span>51JK商户后台</span></div>
+      <div class="pull-right" style="margin-top: 20px;">
+        <!-- <a class="exit" style="margin: 0 10px" href="#" target="_blank">商城首页</a>
+        <span style="color: #bfbfbf">|</span> -->
+        <span th:if="${storeUrl}"><a
+          th:href="${#strings.indexOf(storeUrl,'http://')}?${#strings.prepend(storeUrl,'http://')}:${storeUrl}"
+          target="_blank">门店后台</a></span>
+        <span th:if="!${storeUrl}">
+        <a class="exit" style="margin: 0 10px" th:href="${storeUrl}" title="您还没有配置门店系统，请联系51健康管理员。">门店后台</a>
+          <!--data-toggle="modal" data-target="#door_store" data-keyboard="false"-->
+        </span><span style="color: #fff">|</span>
+        <!--门店管理弹框 -->
+        <div id="door_store" tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
+                <h4 class="modal-title" style="color: #ff0000">警告</h4></div>
+              <div class="modal-body">
+                <span style="font-size:15px ;font-weight: 700;color: #ff0000">您还没有配置门店系统，请联系51健康管理员。</span>
+                <br></div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">我知道了</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="exit" style="margin: 0 20px" href="/merchant/loginOut">安全退出 <i
+          class="icon iconfont icon-icon-anquantuichu"></i></a></div>
+    </div>
+    <div class="notice-bar" id="notice" style="background-color: #ffef68" th:if="${session.noticeTitle_shop} != null">
+      <div class="notice-bar-content">
+        <span th:text="${session.noticeTitle_shop}"></span> <a class="notice-detail" onclick="openNotice()">&nbsp;&nbsp;&nbsp;&nbsp;查看详情</a>
+      </div>
+      <div class="notice-bar-close">
+        <a class="notice-icon" onclick="closeNotice()">×</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="top-bar lee_top" style="border-bottom:25px solid #f2f2f2" th:if="${session.noticeTitle_shop} == null">
+    <div class="clearfix ">
+      <div class="pull-left">
+                        <span class="logo"><img class="logo_img" th:src="${session.shopLogurl}"
+                                                style="max-height: 50px"/>欢迎，
+                            <span class="user_name" th:text="${session.shortMessageSign}"></span>使用<span
+                            class="shop_title"></span>51JK商户后台</span>!
+      </div>
+      <div class="pull-right" style="margin-top: 20px;">
+        <!-- <a class="exit" style="margin: 0 10px" href="#" target="_blank">商城首页</a>
+        <span style="color: #bfbfbf">|</span> -->
+        <span th:if="${storeUrl}"><a id="storeUrlId" target="_blank">门店后台</a></span>
+        <script type="text/javascript" th:inline="javascript">
+          var storeUrlStr = [[${storeUrl}]];
+          if (storeUrlStr != null && storeUrlStr.indexOf("http") == -1) {
+            storeUrlStr = "http://" + storeUrlStr;
+          }
+          if (storeUrlStr != null && storeUrlStr.indexOf(",") != -1) {
+            storeUrlStr = storeUrlStr.split(",")[0];
+          }
+          if (storeUrlStr != null && storeUrlStr.indexOf("，") != -1) {
+            storeUrlStr = storeUrlStr.split("，")[0];
+          }
+          $("#storeUrlId").attr("href", storeUrlStr);
+        </script>
+        <span th:if="!${storeUrl}">
+        <a class="exit" style="margin: 0 10px" th:href="${storeUrl}" title="您还没有配置门店系统，请联系51健康管理员。">门店后台</a>
+          <!--data-toggle="modal" data-target="#door_store" data-keyboard="false"-->
+        </span><span style="color: #fff">|</span>
+        <!--门店管理弹框 -->
+        <div id="door_store" tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
+                <h4 class="modal-title" style="color: #ff0000">警告</h4></div>
+              <div class="modal-body">
+                <span style="font-size:15px ;font-weight: 700;color: #ff0000">您还没有配置门店系统，请联系51健康管理员。</span>
+                <br></div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">我知道了</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="exit" style="margin: 0 20px" href="/merchant/loginOut">安全退出 <i
+          class="icon iconfont icon-icon-anquantuichu"></i></a></div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script type="text/javascript" src="/templates/views/resource/merchant/js/click.js"></script>
+</head>
+
+<body>
+<div th:fragment="leftmenu">
+  <div class="sidebar">
+    <a href="javascript:void(0)" class="clink-all">
+      <i class="icon iconfont icon-icon-gongnengzhankai"></i>
+      <span>全部展开</span>
+    </a>
+    <ul class="sui-nav nav-list nav-large expmenu">
+
+      <li class="">
+        <div class="nav-header">
+          <i class="icon iconfont icon-icon-shangjiazhongxin"></i>
+          数据中心
+          <i class="sui-icon icon-pc-chevron-bottom"></i></div>
+        <div class="menu">
+          <div class="item ">
+            <a href="/merchant/data_profile">· 数据概况</a></div>
+          <div class="item ">
+            <a href="/merchant/business_analysis">· 交易分析</a></div> <!--zkc-->
+          <div class="item ">
+            <a href="/merchant/seek_profile">· 服务分析</a></div>
+          <div class="item ">
+            <a href="/merchant/flow_analysis">· 流量分析</a></div>
+        </div>
+      </li>
+
+      <li class="">
+        <div class="nav-header">
+          <i class="icon iconfont icon-icon-shangpinguanli"></i>
+          商品管理
+          <i class="sui-icon icon-pc-chevron-bottom"></i></div>
+        <div class="menu">
+          <div class="item ">
+            <a href="/merchant/productList">· 商品列表</a></div>
+          <div class="item ">
+            <a href="/merchant/classify">· 商品分类</a></div>
+          <div class="item " th:if="${session.isErppriceOpen == 1}" >
+            <a href="/merchant/erpPrice/manage">· ERP价格</a>
+          </div>
+          <div class="item " th:if="${session.has_storage == 1}">
+            <a href="/merchant/goods/storage">· 库存查询</a></div>
+        </div>
+      </li>
+      <li class="">
+        <div class="nav-header">
+          <i class="icon iconfont icon-icon-dingdanguanli"></i>
+          订单管理
+          <i class="sui-icon icon-pc-chevron-bottom"></i></div>
+        <div class="menu">
+          <div class="item ">
+            <a th:href="@{/merchant/order_list}">· 订单列表</a></div>
+          <div class="item ">
+            <a th:href="@{/merchant/refund_list}">· 退款列表</a></div>
+          <div class="item ">
+            <a th:href="@{/merchant/comment_list}">· 评价列表</a></div>
+          <div class="item ">
+            <a th:href="@{/merchant/invoice_manager}">· 发票管理</a></div>
+          <div class="item ">
+            <a th:href="@{/merchant/preorderList}">· 预约列表</a></div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</div>
+</body>
+
+</html>

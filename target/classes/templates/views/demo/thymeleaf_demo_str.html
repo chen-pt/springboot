@@ -1,0 +1,23 @@
+
+    <h2>原始字符串：<span th:text="${testString}"></span></h2>
+    <hr/>
+    <h2>List to String：<span th:text="${#strings.toString(listObj)}"></span></h2>
+    <h2>判断list是否为空：<span th:text="${#strings.listIsEmpty(listObj)}"></span></h2>
+    <h2>字符串是否包含，区分大小写： <span th:text="${#strings.contains(testString,'S')}"></span></h2>
+    <h2>字符串是否包含，不区分大小写： <span th:text="${#strings.containsIgnoreCase(testString,'s')}"></span></h2>
+    <h2>字符串是否以某个字符串开始： <span th:text="${#strings.startsWith(testString,'dfS')}"></span></h2>
+    <h2>字符串是否以某个字符串结束： <span th:text="${#strings.endsWith(testString,'dfS')}"></span></h2>
+    <h2>字符出现在字符串中的下标： <span th:text="${#strings.indexOf(testString,'S')}"></span></h2>
+    <h2>截取字符串： <span th:text="${#strings.substring(testString,2,5)}"></span></h2>
+    <h2>如果该字符串以改字符开始，则截取前缀： <span th:text="${#strings.substringAfter(testString,'dfS')}"></span></h2>
+    <h2>如果该字符串以改字符结尾，则截取后缀： <span th:text="${#strings.substringBefore(testString,'234')}"></span></h2>
+    <h2>替换： <span th:text="${#strings.replace(testString,'234','432')}"></span></h2>
+    <h2>在字符串前面追加： <span th:text="${#strings.prepend(testString,'234')}"></span></h2>
+    <h2>在字符串后面追加： <span th:text="${#strings.append(testString,'234')}"></span></h2>
+    <h2>字符串转换成大写： <span th:text="${#strings.toUpperCase(testString)}"></span></h2>
+    <h2>字符串转换成小写： <span th:text="${#strings.toLowerCase(testString)}"></span></h2>
+    <h2>字符串去掉前后空格： <span th:text="${#strings.trim(testString)}"></span></h2>
+    <h2>字符串长度： <span th:text="${#strings.length(testString)}"></span></h2>
+    <h2>字符串首字母大写： <span th:text="${#strings.capitalize(testString)}"></span></h2>
+    <h2>字符串比较： <span th:text="${#strings.equals(testString,'dfStrw er3234')}"></span></h2>
+    <h2>字符串比较，不区分大小写： <span th:text="${#strings.equalsIgnoreCase(testString,'dfStrwer3234')}"></span></h2>

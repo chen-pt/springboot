@@ -1,0 +1,9 @@
+table tbody td:nth-child(11){
+	color: #48a7df;
+}
+table tbody td:nth-child(12){
+	color: #48a7df;
+}
+table tbody td.changeCol{
+	color: #59c4aa;
+}

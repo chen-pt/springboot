@@ -1,0 +1,68 @@
+body{
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  color: #000;
+  background-color: #fff;
+  font-size: 14px;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+.print{
+  position: relative;
+  width: 94%;
+  margin: 0 auto;
+  background-color: #fff;
+  height: auto;
+}
+.section-box{
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+.section-box.header{
+  padding-top: 4px;
+  text-align: center;
+  padding-bottom: 0;
+  border: none!important;
+}
+.section-box .header-title{
+  font-size: 16px;
+}
+.section-box .section-box-text{
+  padding: 0!important;
+  margin: 0!important;
+  font-size: 12px;
+}
+/*品名部分样式*/
+.section-box-goods-title{
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+.section-box-goods-title span.goods-title-item{
+  display: inline-block;
+  width: 22%;
+  text-align: center;
+}
+.section-box-goods-title span.goods-title-item:first-child{
+  text-align: left;
+}
+.section-box-goods-title span.goods-title-item:last-child{
+  text-align: right;
+}
+
+/*商品tabel头  table内容*/
+.section-box table.goods-title,.section-box table.goods-info{
+  position: relative;
+  width: 100%;
+  font-size: 12px;
+}
+
+/*打印时间*/
+.print-time{
+  padding-top: 10px;
+}

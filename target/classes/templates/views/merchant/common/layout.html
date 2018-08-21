@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--suppress HtmlUnknownTarget, JSUnresolvedLibraryURL -->
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>商户后台</title>
+</head>
+<body>
+
+<input type="hidden" th:value="${img_url_prefix}" id="img_url_prefix">
+<input type="hidden" th:value="${shopwxUrl}" id="shopwxUrl">
+
+<div th:replace="views/merchant/common/footer :: footer">
+</div>
+
+<div class="sui-layout">
+  <div th:replace="views/merchant/common/head :: head">
+
+
+    </div>
+  <div th:replace="views/merchant/common/leftmenu :: leftmenu">
+
+
+    </div>
+  <style>.sui-breadcrumb > li + li.no_content::before { color: #ccc; content: " "; padding: 0 5px; } .sui-pagination ul>.active>a { background-color: #6bc5a4; border-color: #87d2b7; } .sui-pagination ul>li>a { color: #87d2b7; }</style>
+  <div class="content">
+      <div tiles:replace="content">
+
+
+        </div>
+    </div>
+  <div th:replace="views/merchant/common/foot :: foot">
+
+  </div>
+</div>
+</body>
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  var imageUrl =$("#img_url_prefix").val();
+  var siteId = 100030;
+
+  function openNotice(){
+    $('#noticeModal').modal('show');
+  }
+  function closeNotice(){
+    $('#notice').fadeOut('fast');
+    $("#title").css("border-bottom","25px solid #f2f2f2");
+    $.ajax({
+      url: '/merchant/hideNoticeShop',
+      type: 'POST',
+      success: function (data) {
+      },
+    })
+  }
+  
+  function getNoticeMore() {
+
+    window.location.href = '/merchant/notice_index';
+    
+  }
+  /**
+   * 图片链接
+   * @param hash 图片hash
+   * @param width 图片宽度 尽量使用small、normal、medium、large
+   * @param height 图片高度 如果width传的不是数字 则该参数是suffix
+   * @param suffix 后缀 默认jpg
+   */
+  function imgLink (hash, width, height, suffix) {
+    suffix = suffix || '.jpg';
+    if (!hash) {
+      return {
+        src: '/templates/views/resource/merchant/img/empty.jpg',
+      }
+    }
+    if(hash.indexOf("http")!=-1){
+      hash=hash.substring(hash.lastIndexOf("/"),hash.lastIndexOf("."));
+    }
+
+    const sizeMap = {
+      small: [100, 100],
+      normal: [300, 300],
+      medium: [500, 500],
+      large: [600, 600],
+    };
+
+    if ((Object.keys(sizeMap).indexOf(width) !== -1)) {
+      suffix = height || suffix;
+      width = [sizeMap[width][0], height = sizeMap[width][1]][0];
+    } else {
+      width = width || 100;
+      height = height || 100;
+    }
+    var url=imageUrl+hash+ suffix+"?x-oss-process=image/resize,m_lfit,h_"+height+",w_"+width+"/watermark,image_eWJ6ZjIucG5n,t_2,g_se,x_10,y_10";
+ /*   $.ajax({
+      type: 'POST',
+      url: "/common/queryByHash",
+      data: {hash:hash},
+      dataType: 'text',
+      async:false,
+      success: function (data) {
+        if(data.indexOf(".")==-1){
+          url=imageUrl+data+ suffix+"?x-oss-process=image/resize,m_lfit,h_"+height+",w_"+width;
+        }else {
+          url=imageUrl+data+"?x-oss-process=image/resize,m_lfit,h_"+height+",w_"+width;
+        }
+
+      }
+    })*/
+    return url;
+    /* return {
+     src: imageUrl + '/display/public/' + siteId + '/0/40/10/0/' + width + 'x' + height + '/' + hash + suffix,
+     };*/
+  }
+  /*]]>*/
+</script>
+</html>
