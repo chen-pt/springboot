@@ -33,6 +33,8 @@ public class WorkExperience implements Cloneable{
     public void setCompany(String company) {
         this.company = company;
     }
+
+
     public Object clone(){
         try {
             return super.clone();
@@ -41,4 +43,5 @@ public class WorkExperience implements Cloneable{
         }
 
     }
+
 }

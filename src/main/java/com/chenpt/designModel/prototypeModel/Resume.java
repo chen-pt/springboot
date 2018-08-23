@@ -12,50 +12,62 @@ public class Resume implements Cloneable,Serializable{
     private static final long serialVersionUID = 1L;
 
     private String name;
-    private static String sex;
-    transient private String age;
+    private String sex;
+    private String age;
     private WorkExperience workExperience;
 
-    public WorkExperience getWorkExperience() {
-        return workExperience;
+    Resume(String name,String sex,String age){
+        this.name=name;
+        this.sex=sex;
+        this.age=age;
+        this.workExperience=new WorkExperience();
     }
 
-    public void setWorkExperience(WorkExperience workExperience) {
-        this.workExperience = workExperience;
+    /**
+     * 添加私有构造 克隆工作经历
+     * @param workExperience
+     */
+    private Resume(WorkExperience workExperience){
+        this.workExperience= (WorkExperience) workExperience.clone();
     }
 
-    public String getName() {
-        return name;
+    /**
+     * 设置个人信息
+     * @param sex
+     * @param age
+     */
+    public void setPersonInfo(String sex,String age){
+        this.sex=sex;
+        this.age=age;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    /**
+     * 设置工作经历
+     * @param workDate
+     * @param company
+     */
+    public void setWorkExperience(String workDate, String company){
+        this.workExperience.setWorkDate(workDate);
+        this.workExperience.setCompany(company);
     }
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
+    //描述
     public void dispaly(){
         System.out.println("姓名："+name+"\t年龄："+age+"\t性别："+sex);
-//        System.out.println("工作经历："+workExperience.getWorkDate()+"\t"+workExperience.getCompany());
+        System.out.println("工作经历："+workExperience.getWorkDate()+age+"\t"+workExperience.getCompany());
     }
 
+    /**
+     * 重写了克隆方法
+     * @return
+     */
     public Object clone(){
         try {
-            Resume resume = (Resume)super.clone();
+            Resume resume = new Resume(this.workExperience);//调用私有构造器实现工作经历克隆
+            //给对象属性重新赋值--最终返回的是深复制的resume对象
+            resume.name=this.name;
+            resume.sex=this.sex;
+            resume.age=this.age;
             return resume;
         }catch (Exception e){
             return null;

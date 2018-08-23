@@ -16,6 +16,6 @@ public class ConcreteWebSite implements WebSite {
 
     @Override
     public void use(User user) {
-        System.out.println("网站分类："+name+"用户："+user.getName());
+        System.out.println("网站分类："+name+"用户："+user.name);
     }
 }
